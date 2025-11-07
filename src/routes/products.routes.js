@@ -1,10 +1,14 @@
 import { Router } from "express";
+import { create, destroy, getAll, getById } from "../controllers/product.controller.js";
+import isAuthenticated from "../middlewares/auth/isAuthenticated.middleware.js";
 
 const router = Router();
 
-router.get("/", function () { console.log("get"); });
-router.get("/:id", function () { console.log("get id"); });
-router.post("/create", function () { console.log("create"); });
-router.delete("/:id", function () { console.log("delete"); });
+router.use(isAuthenticated);
+
+router.get("/", getAll);
+router.get("/:id", getById);
+router.post("/create", create);
+router.delete("/:id", destroy);
 
 export default router;

@@ -1,13 +1,11 @@
-import dotenv from "dotenv";
+import "dotenv/config";
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import router from "./src/routes/index.js";
 import appConfig from "./src/config/app.config.js";
 import corsConfig from "./src/config/cors.config.js ";
-import notFound from "./src/middlewares/not-found.middleware.js";
-
-dotenv.config();
+import notFound from "./src/middlewares/auth/not-found.middleware.js";
 
 const app = express();
 
