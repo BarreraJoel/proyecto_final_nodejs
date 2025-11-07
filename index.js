@@ -1,19 +1,22 @@
 import dotenv from "dotenv";
 import express from "express";
+import bodyParser from "body-parser";
 import cors from "cors";
 import router from "./src/routes/index.js";
 import appConfig from "./src/config/app.config.js";
 import corsConfig from "./src/config/cors.config.js ";
+import notFound from "./src/middlewares/not-found.middleware.js";
 
 dotenv.config();
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsConfig));
 
 app.use("/api", router);
+app.use(notFound);
 
 const startServer = async () => {
   app.listen(appConfig.port, () => {
