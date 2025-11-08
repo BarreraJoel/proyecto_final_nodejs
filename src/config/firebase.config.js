@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import "dotenv/config";
 import { env } from "process";
 
 const firebaseConfig = {
