@@ -5,11 +5,11 @@ export default (req, res, next) => {
     try {
         const authHeader = req.headers['authorization'];
         if (!authHeader)
-            throw new Error("Debe enviar un token")
+            res.sendStatus(401);
 
         const token = authHeader.split(' ')[1];
         if (!token)
-            throw new Error("Token inválido o ausente");
+            res.sendStatus(401);
 
         const decoded = jwt.verify(token, jwtConfig.secretKey);
         req.user = decoded;

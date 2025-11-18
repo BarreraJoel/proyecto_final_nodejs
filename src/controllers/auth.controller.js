@@ -5,9 +5,8 @@ export async function login(req, res) {
         const { email, password } = req.body;
         const token = await loginUser(email, password);
 
-        if (!token) {
-            throw new Error("No se pudo iniciar sesión");
-        }
+        if (!token)
+            res.sendStatus(401);
 
         return res.status(200).json({
             success: true,
