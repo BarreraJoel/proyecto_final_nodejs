@@ -36,8 +36,8 @@ FIREBASE_APP_ID=your_firebase_app_id
 FRONTEND_URL=your_frontend_url
 ```
 
-### 4. Ejecutar servidor en modo de desarrollo
+### 4. Ejecutar servidor
 
 ```bash
-npm run dev
+npm run start
 ```
