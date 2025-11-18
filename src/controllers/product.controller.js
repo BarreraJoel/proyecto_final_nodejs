@@ -22,6 +22,9 @@ export async function getAll(req, res) {
 export async function getById(req, res) {
     try {
         const id = req.params.id;
+        if (!id) {
+            res.sendStatus(400);
+        }
         const product = await getProductById(id);
         if (!product) {
             return res.status(404).json({
@@ -66,8 +69,12 @@ export async function create(req, res) {
 export async function destroy(req, res) {
     try {
         const id = req.params.id;
-        if (!await deleteProduct(id))
-            throw new Error("No se pudo eliminar el producto");
+        if (!id) {
+            res.sendStatus(400);
+        }
+        if (!await deleteProduct(id)) {
+            res.sendStatus(404);
+        }
 
         return res.status(204).json({
             success: true,

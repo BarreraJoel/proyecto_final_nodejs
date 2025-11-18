@@ -16,6 +16,10 @@ export async function createProduct(data) {
 };
 
 export async function deleteProduct(id) {
-    const deleted = await destroyProduct(id);
-    return deleted;
+    if(!await getProduct(id)) {
+        return false;
+    }
+
+    await destroyProduct(id);
+    return true;
 };

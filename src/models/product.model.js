@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "../config/firebase.config.js";
 
 export async function getProducts() {
@@ -17,9 +17,13 @@ export async function getProduct(id) {
 };
 
 export async function insertProduct(product) {
-    const docRef = await addDoc(collection(db, "products"), product);
-    const snapshot = await getDoc(docRef);
-    return snapshot.data();
+    const docRef = doc(collection(db, "products"));
+    const newProduct = {
+        id: docRef.id,
+        ...product
+    };
+    await setDoc(docRef, newProduct);
+    return newProduct;
 }
 
 export async function destroyProduct(id) {
