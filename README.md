@@ -2,22 +2,28 @@
 
 #### Requisitos previos
 
-**Node.js**: Versión 18 o superior
+**Node.js** >= 20.0.0
 **npm**: Gestor de paquetes
 
-### 1. Instalar dependencias
+### 1. Clonar el repositorio:
+```bash
+git clone https://github.com/BarreraJoel/proyecto_final_nodejs.git
+cd proyecto_final_nodejs
+```
+
+### 2. Instalar dependencias
 
 ```bash
 npm install
 ```
 
-### 2. Crear archivo .env
+### 3. Crear archivo .env
 
 ```bash
 cp .env.example .env
 ```
 
-### 3. Setear valores en .env
+### 4. Configurar valores en .env
 #### Ejemplo
 
 ```bash
@@ -36,7 +42,7 @@ FIREBASE_APP_ID=your_firebase_app_id
 FRONTEND_URL=your_frontend_url
 ```
 
-### 4. Ejecutar servidor
+### 5. Ejecutar servidor
 
 ```bash
 npm run start
