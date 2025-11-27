@@ -16,13 +16,17 @@ app.use(cors(corsConfig));
 app.use("/api", router);
 app.use(notFound);
 
-const startServer = async () => {
-  app.listen(appConfig.port, () => {
-    console.log(`🚀 Servidor escuchando en puerto: ${appConfig.port}`);
-  });
-};
+if (appConfig.env == "development") {
+  const startServer = async () => {
+    app.listen(appConfig.port, () => {
+      console.log(`🚀 Servidor escuchando en puerto: ${appConfig.port}`);
+    });
+  };
 
-startServer().catch((error) => {
-  console.error("❌ Error al iniciar el servidor: ", error);
-  process.exit(1);
-});
+  startServer().catch((error) => {
+    console.error("❌ Error al iniciar el servidor: ", error);
+    process.exit(1);
+  });
+}
+
+export default app;
