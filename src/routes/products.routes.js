@@ -4,11 +4,9 @@ import isAuthenticated from "../middlewares/auth/isAuthenticated.middleware.js";
 
 const router = Router();
 
-router.use(isAuthenticated);
-
 router.get("/", getAll);
 router.get("/:id", getById);
-router.post("/create", create);
-router.delete("/:id", destroy);
+router.post("/create", isAuthenticated, create);
+router.delete("/:id", isAuthenticated, destroy);
 
 export default router;

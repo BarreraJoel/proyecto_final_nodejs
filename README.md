@@ -1,6 +1,6 @@
-### Iniciar servidor
+### 📄 Iniciar servidor
 
-#### Requisitos previos
+#### 🔧 Requisitos previos
 
 **Node.js** >= 20.0.0
 **npm**: Gestor de paquetes
@@ -28,6 +28,7 @@ cp .env.example .env
 
 ```bash
 APP_PORT=your_port
+APP_ENV= # development | production
 
 JWT_SECRET=your_jwt_secret_key_here
 JWT_EXPIRES_IN=your_expire_in
@@ -47,3 +48,14 @@ FRONTEND_URL=your_frontend_url
 ```bash
 npm run start
 ```
+
+
+### 📍Endpoints
+
+|Método|Endpoint|Autenticado|
+|------|--------|-----------|
+|POST|api/auth/login|❌|
+|GET|api/products|❌|
+|GET|api/products/:id|❌|
+|POST|api/products/create|✅|
+|DELETE|api/products/:id|✅|
